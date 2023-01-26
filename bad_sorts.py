@@ -87,6 +87,3 @@ def find_min_index(L, n):
             min_index = i
     return min_index
 
-
-def new_func():
-    print("hello")
