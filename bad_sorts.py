@@ -86,4 +86,3 @@ def find_min_index(L, n):
         if L[i] < L[min_index]:
             min_index = i
     return min_index
-
