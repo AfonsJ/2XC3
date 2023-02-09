@@ -1,6 +1,6 @@
 import bad_sorts
 import timeit
-import exp3toexcel
+import expr3toexcel
 
 LIST_LENGTH = 5000##5000
 NUMBER_OF_RUNS = 100##100
@@ -30,7 +30,7 @@ def runtime_bubble():
         near_sorted_list_times.append(total_near_sorted/NUMBER_OF_RUNS)
 
         print("NEAR SORTED:  #OFSWAPS:" + str(current_list_length) + "\tTIME: " + str(total_near_sorted/NUMBER_OF_RUNS) + "\n")
-    exp3toexcel.bubble_sort_write_to_xl(INC_INDEX, near_sorted_list_times)
+    expr3toexcel.bubble_sort_write_to_xl(INC_INDEX, near_sorted_list_times)
         
 
 
@@ -51,7 +51,7 @@ def runtime_insertion():
         near_sorted_list_times.append(total_near_sorted/NUMBER_OF_RUNS)
 
         print("NEAR SORTED:  #OFSWAPS:" + str(current_list_length) + "\tTIME: " + str(total_near_sorted/NUMBER_OF_RUNS) + "\n")
-    exp3toexcel.insertion_sort_write_to_xl(INC_INDEX, near_sorted_list_times)
+    expr3toexcel.insertion_sort_write_to_xl(INC_INDEX, near_sorted_list_times)
 
 
 def runtime_selection():
@@ -70,7 +70,7 @@ def runtime_selection():
         near_sorted_list_times.append(total_near_sorted/NUMBER_OF_RUNS)
 
         print("NEAR SORTED:  #OFSWAPS:" + str(current_list_length) + "\tTIME: " + str(total_near_sorted/NUMBER_OF_RUNS) + "\n")
-    exp3toexcel.selection_sort_write_to_xl(INC_INDEX, near_sorted_list_times)
+    expr3toexcel.selection_sort_write_to_xl(INC_INDEX, near_sorted_list_times)
 
 
 
