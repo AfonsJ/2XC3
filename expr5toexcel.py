@@ -1,10 +1,10 @@
 from openpyxl import Workbook, load_workbook
-import expr5toexcel
 
-def bubble_sort_write_to_xl(inc_index, random_list_times):
+
+def quick_sort_write_to_xl(inc_index, random_list_times):
     workbook = Workbook()
     worksheet = workbook.active
-    sheetname = "BubbleSort"
+    sheetname = "Quicksort"
     # worksheet = workbook.get_active_sheet()
     worksheet.title = sheetname
 
@@ -13,17 +13,17 @@ def bubble_sort_write_to_xl(inc_index, random_list_times):
     #worksheet.cell(row=1, column=3, value='near_sorted_list_time')
 
     # i = 0
-    for i in range(0,len(random_list_times)):
+    for i in range(len(random_list_times)):
         worksheet.cell(row=i+2, column=1, value=inc_index)
         worksheet.cell(row=i+2, column=2, value=random_list_times[i])
         #worksheet.cell(row=i+2, column=3, value=near_sorted_list_times[i])
-        inc_index+=250
-    workbook.save(filename="expr3runtime.xlsx")
+        inc_index+=10
+    workbook.save(filename="expr5.xlsx")
 
-def insertion_sort_write_to_xl(inc_index, random_list_times):
-    workbook = load_workbook('expr3runtime.xlsx')
+def merge_sort_write_to_xl(inc_index, random_list_times):
+    workbook = load_workbook('expr5.xlsx')
     # worksheet = workbook.active
-    sheetname = "InsertionSort"
+    sheetname = "MergeSort"
     worksheet = workbook.create_sheet(sheetname)
     worksheet.title = sheetname
 
@@ -36,13 +36,13 @@ def insertion_sort_write_to_xl(inc_index, random_list_times):
         worksheet.cell(row=i+2, column=1, value=inc_index)
         worksheet.cell(row=i+2, column=2, value=random_list_times[i])
         #worksheet.cell(row=i+2, column=3, value=near_sorted_list_times[i])
-        inc_index+=250
-    workbook.save("expr3runtime.xlsx")
+        inc_index+=10
+    workbook.save("expr5.xlsx")
 
-def selection_sort_write_to_xl(inc_index, random_list_times):
-    workbook = load_workbook('expr3runtime.xlsx')
+def heap_sort_write_to_xl(inc_index, random_list_times):
+    workbook = load_workbook('expr5.xlsx')
     # worksheet = workbook.active
-    sheetname = "SelectionSort"
+    sheetname = "HeapSort"
     worksheet = workbook.create_sheet(sheetname)
     worksheet.title = sheetname
 
@@ -55,5 +55,5 @@ def selection_sort_write_to_xl(inc_index, random_list_times):
         worksheet.cell(row=i+2, column=1, value=inc_index)
         worksheet.cell(row=i+2, column=2, value=random_list_times[i])
         #worksheet.cell(row=i+2, column=3, value=near_sorted_list_times[i])
-        inc_index+=250
-    workbook.save("expr3runtime.xlsx")
+        inc_index+=10
+    workbook.save("expr5.xlsx")
