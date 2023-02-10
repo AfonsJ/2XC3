@@ -1,5 +1,4 @@
 from openpyxl import Workbook, load_workbook
-import expr5toexcel
 
 def bubble_sort_write_to_xl(inc_index, random_list_times):
     workbook = Workbook()

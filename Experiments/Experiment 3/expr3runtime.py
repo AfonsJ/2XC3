@@ -1,4 +1,4 @@
-import bad_sorts
+from givensorts import bad_sorts
 import timeit
 import expr3toexcel
 
