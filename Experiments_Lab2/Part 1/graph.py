@@ -107,6 +107,24 @@ def DFS2_helperfxn(G, node, node2, visited, path):
     return False  # Return False to indicate that no path has been found from the current node to node2
 
 
+#Breadth First Search 3 
+def BFS3(G, node):
+    visited = []
+    q = []
+    path = {}
+
+    q.append(node)
+    visited.append(node)
+    
+    while len(q) > 0:
+        n = q.pop()
+        for node in G.adjacent_nodes(n):
+            if node not in visited:
+                q.append(node)
+                visited.append(node)
+                path.update({node:n})
+    
+    return path
 
 #Use the methods below to determine minimum vertex covers
 def add_to_each(sets, element):
@@ -228,20 +246,21 @@ def size_of_smallest_vertex_cover(G):
 # #########################TEST CODE#################################################################
 
 # # create a new Graph with 6 nodes corresponding to the in Lab Instructions Part 1  
-# g = Graph(6)
+#g = Graph(6)
 
-# g.add_edge(1, 2) # connect nodes 1 and 2
-# g.add_edge(1, 3) # connect nodes 1 and 3
-# g.add_edge(2, 4) # connect nodes 2 and 4
-# g.add_edge(3, 4) # connect nodes 3 and 4
-# g.add_edge(5, 4) # connect nodes 5 and 4
-# g.add_node() # add a new node 6 to the graph
-# g.add_edge(4, 6) # connect node 4 and node 6
-# del g.adj[0] # delete node 0 from the adjacency list
+#g.add_edge(1, 2) # connect nodes 1 and 2
+#g.add_edge(1, 3) # connect nodes 1 and 3
+#g.add_edge(2, 4) # connect nodes 2 and 4
+#g.add_edge(3, 4) # connect nodes 3 and 4
+#g.add_edge(5, 4) # connect nodes 5 and 4
+#g.add_node() # add a new node 6 to the graph
+#g.add_edge(4, 6) # connect node 4 and node 6
+#del g.adj[0] # delete node 0 from the adjacency list
 
 
-# print("Graph Adjacency List: " + str(g.adj))
-# print("BFS: " + str(BFS2(g,3,5)))
+#print("Graph Adjacency List: " + str(g.adj))
+#print("BFS: " + str(BFS2(g,3,5)))
+#print(BFS3(g,3))
 # print("DFS: " + str(DFS2(g,3,5)))
 # print("MVC: " + str(MVC(g)))
 
