@@ -1,5 +1,4 @@
 from collections import deque
-
 #Undirected graph using an adjacency list
 class Graph:
 
@@ -62,8 +61,33 @@ def DFS2_helper(G, node, node2, visited, path):
     return False  # Return False to indicate that no path has been found from the current node to node2
 
 
+def BFS3(G, node):
+    visited = []
+    q = []
+    path = []
 
+    q.append(node)
+    visited.append(node)
+    
+    while len(q) > 0:
+        n = q.pop()
+        print(n)
+        for node in G.adjacent_nodes(n):
+            if node not in visited:
+                q.append(node)
+                visited.append(node)
+                path.append(str(node)+":"+str(n))
+    
+    return path
 
+def DFS3(G, node):
+    pass
+
+def has_cycle(G):
+    pass
+
+def is_connected(G):
+    pass
 ##############################################################
 #########################TEST CODE#############################
 # create a Graph object with 10 nodes
@@ -84,6 +108,8 @@ g.add_edge(4, 6)  # connect node 4 to node 6
 print(g.adj)
 print(BFS2(g,3,5))
 print(DFS2(g,3,5))
+
+print(BFS3(g,3))
 # print(MVC(graph))
 ###############################################################
 #########################TEST CODE#############################
