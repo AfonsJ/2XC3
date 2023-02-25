@@ -107,6 +107,24 @@ def DFS2_helperfxn(G, node, node2, visited, path):
     return False  # Return False to indicate that no path has been found from the current node to node2
 
 
+#Breadth First Search 3 
+def BFS3(G, node):
+    visited = []
+    q = []
+    path = {}
+
+    q.append(node)
+    visited.append(node)
+    
+    while len(q) > 0:
+        n = q.pop()
+        for node in G.adjacent_nodes(n):
+            if node not in visited:
+                q.append(node)
+                visited.append(node)
+                path.update({node:n})
+    
+    return path
 
 #Use the methods below to determine minimum vertex covers
 def add_to_each(sets, element):
