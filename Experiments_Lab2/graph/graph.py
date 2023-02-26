@@ -126,6 +126,40 @@ def BFS3(G, node):
     
     return path
 
+# has cycle function
+def has_cycle(G):
+    marked = {node: False for node in G.adj}  # initialize all nodes as unmarked
+    for node in G.adj:
+        if not marked[node]:
+            if dfs_cycle_helper(G, node, marked, None):
+                return True
+    return False
+
+
+def dfs_cycle_helper(G, node, marked, parent):
+    marked[node] = True
+    for neighbor in G.adj[node]:
+        if not marked[neighbor]:
+            if dfs_cycle_helper(G, neighbor, marked, node):
+                return True
+        elif neighbor != parent:
+            return True
+    return False
+
+# is connected function
+def is_connected(G):
+    marked = {node: False for node in G.adj}  # initialize all nodes as unmarked
+    start_node = next(iter(G.adj))  # start BFS from any node
+    q = deque([start_node])
+    marked[start_node] = True
+    while len(q) > 0:
+        node = q.popleft()
+        for neighbor in G.adj[node]:
+            if not marked[neighbor]:
+                marked[neighbor] = True
+                q.append(neighbor)
+    return all(marked.values())
+
 #Use the methods below to determine minimum vertex covers
 def add_to_each(sets, element):
     copy = sets.copy()
