@@ -1,7 +1,6 @@
 from collections import deque
 import random
 
-
 #Undirected graph using an adjacency list
 class Graph:
 
@@ -106,25 +105,49 @@ def DFS2_helperfxn(G, node, node2, visited, path):
     path.pop()  # If the loop completes without finding a path to node2, remove the current node from the path list
     return False  # Return False to indicate that no path has been found from the current node to node2
 
+def BFS3(G, node1):
+    # Initialize a set of visited nodes with the starting node,
+    # a queue with the starting node, and a dictionary of predecessors
+    # with the starting node as the key and None as the value.
+    visited = {node1}
+    queue = [node1]
+    pred = {}
+    # Loop as long as the queue is not empty
+    while queue:
+        # Dequeue a node from the front of the queue
+        current = queue.pop(0)
+        # Look at all the neighbors of the current node
+        for neighbor in G.adjacent_nodes(current):
+            # If a neighbor has not been visited yet, mark it as visited,
+            # enqueue it, and record its predecessor in the pred dictionary.
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+                pred[neighbor] = current
+    # Return the pred dictionary
+    return pred
 
-#Breadth First Search 3 
-def BFS3(G, node):
-    visited = []
-    q = []
-    path = {}
-
-    q.append(node)
-    visited.append(node)
-    
-    while len(q) > 0:
-        n = q.pop()
-        for node in G.adjacent_nodes(n):
-            if node not in visited:
-                q.append(node)
-                visited.append(node)
-                path.update({node:n})
-    
-    return path
+def DFS3(G, node1):
+    # Initialize a set of visited nodes with the starting node,
+    # a stack with the starting node, and a dictionary of predecessors
+    # with the starting node as the key and None as the value.
+    visited = {node1}
+    stack = [node1]
+    pred = {}
+    # Loop as long as the stack is not empty
+    while stack:
+        # Pop a node from the top of the stack
+        current = stack.pop()
+        # Look at all the neighbors of the current node
+        for neighbor in G.adjacent_nodes(current):
+            # If a neighbor has not been visited yet, mark it as visited,
+            # add it to the stack, and record its predecessor in the pred dictionary.
+            if neighbor not in visited:
+                visited.add(neighbor)
+                stack.append(neighbor)
+                pred[neighbor] = current
+    # Return the pred dictionary
+    return pred
 
 # has cycle function
 def has_cycle(G):
@@ -280,21 +303,23 @@ def size_of_smallest_vertex_cover(G):
 # #########################TEST CODE#################################################################
 
 # # create a new Graph with 6 nodes corresponding to the in Lab Instructions Part 1  
-# g = Graph(6)
+g = Graph(6)
 
-# g.add_edge(1, 2) # connect nodes 1 and 2
-# g.add_edge(1, 3) # connect nodes 1 and 3
-# g.add_edge(2, 4) # connect nodes 2 and 4
-# g.add_edge(3, 4) # connect nodes 3 and 4
-# g.add_edge(5, 4) # connect nodes 5 and 4
-# g.add_node() # add a new node 6 to the graph
-# g.add_edge(4, 6) # connect node 4 and node 6
-# del g.adj[0] # delete node 0 from the adjacency list
+g.add_edge(1, 2) # connect nodes 1 and 2
+g.add_edge(1, 3) # connect nodes 1 and 3
+g.add_edge(2, 4) # connect nodes 2 and 4
+g.add_edge(3, 4) # connect nodes 3 and 4
+g.add_edge(5, 4) # connect nodes 5 and 4
+g.add_node() # add a new node 6 to the graph
+g.add_edge(4, 6) # connect node 4 and node 6
+#del g.adj[0] # delete node 0 from the adjacency list
 
 
 # print("Graph Adjacency List: " + str(g.adj))
-# print("BFS: " + str(BFS2(g,3,5)))
-# print("DFS: " + str(DFS2(g,3,5)))
+print("BFS:" + str(BFS2(g,3,6)))
+print("DFS:" + str(DFS2(g,3,6)))
+print("BFS3:"+ str(BFS3(g,1)))
+print("BFS2: "+str(BFS2(g,1,6)))
 # print("MVC: " + str(MVC(g)))
 
 # rand_g = create_random_graph(10,4)

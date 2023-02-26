@@ -106,25 +106,49 @@ def DFS2_helperfxn(G, node, node2, visited, path):
     path.pop()  # If the loop completes without finding a path to node2, remove the current node from the path list
     return False  # Return False to indicate that no path has been found from the current node to node2
 
-#Breadth First Search 3 
-def BFS3(G, node):
-    visited = []
-    q = []
-    path = {}
+def BFS3(G, node1):
+    # Initialize a set of visited nodes with the starting node,
+    # a queue with the starting node, and a dictionary of predecessors
+    # with the starting node as the key and None as the value.
+    visited = {node1}
+    queue = [node1]
+    pred = {}
+    # Loop as long as the queue is not empty
+    while queue:
+        # Dequeue a node from the front of the queue
+        current = queue.pop(0)
+        # Look at all the neighbors of the current node
+        for neighbor in G.adjacent_nodes(current):
+            # If a neighbor has not been visited yet, mark it as visited,
+            # enqueue it, and record its predecessor in the pred dictionary.
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+                pred[neighbor] = current
+    # Return the pred dictionary
+    return pred
 
-    q.append(node)
-    visited.append(node)
-    
-    while len(q) > 0:
-        n = q.pop()
-        for node in G.adjacent_nodes(n):
-            if node not in visited:
-                q.append(node)
-                visited.append(node)
-                path.update({node:n})
-    
-    return path
-
+def DFS3(G, node1):
+    # Initialize a set of visited nodes with the starting node,
+    # a stack with the starting node, and a dictionary of predecessors
+    # with the starting node as the key and None as the value.
+    visited = {node1}
+    stack = [node1]
+    pred = {}
+    # Loop as long as the stack is not empty
+    while stack:
+        # Pop a node from the top of the stack
+        current = stack.pop()
+        # Look at all the neighbors of the current node
+        for neighbor in G.adjacent_nodes(current):
+            # If a neighbor has not been visited yet, mark it as visited,
+            # add it to the stack, and record its predecessor in the pred dictionary.
+            if neighbor not in visited:
+                visited.add(neighbor)
+                stack.append(neighbor)
+                pred[neighbor] = current
+    # Return the pred dictionary
+    return pred
 # has cycle function
 def has_cycle(G):
     marked = {node: False for node in G.adj}  # initialize all nodes as unmarked
