@@ -317,7 +317,6 @@ def size_of_smallest_vertex_cover(G):
 #g.add_edge(4, 6) # connect node 4 and node 6
 #del g.adj[0] # delete node 0 from the adjacency list
 
-
 #print("Graph Adjacency List: " + str(g.adj))
 #print("BFS: " + str(BFS2(g,3,5)))
 #print(BFS3(g,3))

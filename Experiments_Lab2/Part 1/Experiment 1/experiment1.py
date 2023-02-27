@@ -2,7 +2,6 @@ import sys
 sys.path.append('Experiments_Lab2\Part 1')
 import graph
 import random
-
 #adding random graph code, has checks for multiples of the same edge
 # i nodes, j edges
 def create_random_graph(i,j):
@@ -47,29 +46,14 @@ def run_exp():
     results = []
     for j in range(100,1001,100):
         sl = []
-
-        for l in range(5,1,-1):
-            edj = int(j*l)
-            con = 0
-            for i in range(1000):
-                grph = create_random_graph(j,edj)
-                if(graph.is_connected(grph) == True):
-                    con += 1
-            
-            prob = (con/1000)*100
-            sl.append((str(l), prob))
-
-        for t in range(1,6):
+        for t in range(1,11):
             edj = int(j/t)
-            con = 0
+            cyc = 0
             for i in range(1000):
                 grph = create_random_graph(j,edj)
-                if(graph.is_connected(grph) == True):
-                    con += 1
-
-            prob = (con/1000) * 100
+                if(graph.has_cycle(grph) == True):
+                    cyc += 1
+            prob = (cyc/1000) * 100
             sl.append(((str(1)+"/"+str(t)),prob))
-
-        print(str(j)+" nodes completed.")
         results.append(sl)
     return results
