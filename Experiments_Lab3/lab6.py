@@ -247,7 +247,7 @@ class RBTree:
             return "[" +  self.__str_helper(node.left) + " <- " + str(node) + "]"
         return "[" + self.__str_helper(node.left) + " <- " + str(node) + " -> " + self.__str_helper(node.right) + "]"
 
-
+""" 
 # create a new RBT
 tree = RBTree()
 
@@ -283,3 +283,4 @@ print(tree)
 tree.fix(node_4)
 print("fix the violation at node_4")
 print(tree)
+print(tree.get_height()) """
