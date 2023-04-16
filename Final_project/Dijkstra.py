@@ -7,13 +7,6 @@ class Dijkstra(SPAlgorithm.SPAlgorithm):
         pass
 
     def calc_sp(self, graph:Graph, source:int, dest:int):
-        # Function for total distance
-        def total_dist(dist):
-            total = 0
-            for key in dist.keys():
-                total += dist[key]
-            return total
-
         G = graph
         pred = {} #Predecessor dictionary. Isn't returned, but here for your understanding
         dist = {} #Distance dictionary
@@ -36,4 +29,4 @@ class Dijkstra(SPAlgorithm.SPAlgorithm):
                     Q.decrease_key(neighbour, dist[current_node] + G.w(current_node, neighbour))
                     dist[neighbour] = dist[current_node] + G.w(current_node, neighbour)
                     pred[neighbour] = current_node
-        return total_dist(dist)
+        return dist[dest]

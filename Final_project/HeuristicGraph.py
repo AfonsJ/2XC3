@@ -19,9 +19,11 @@ class HeuristicGraph(WeightedGraph.WeightedGraph):
     def get_num_of_nodes(self):
         return len(self.adj)
 
+    # w method, returns the weight of an edge between 2 nodes
     def w(self, node1:int, node2:int):
-        if self.are_connected(node1, node2):
-            return self.weights[(node1, node2)]
+        # returns the weight between two nodes, if there does not exist an edge between the two nodes
+        # return float("inf")
+        return self.weights.get((node1, node2), float("inf"))
     
     def set_heuristic(self, h):
         self.__heuristic = h

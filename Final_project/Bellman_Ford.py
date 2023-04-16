@@ -21,7 +21,7 @@ class Bellman_Ford(SPAlgorithm.SPAlgorithm):
         dist[source] = 0
 
         #Meat of the algorithm
-        for _ in range(G.number_of_nodes()):
+        for _ in range(G.get_num_of_nodes()):
             for node in nodes:
                 for neighbour in G.adj[node]:
                     if dist[neighbour] > dist[node] + G.w(node, neighbour):
